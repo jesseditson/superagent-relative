@@ -1,0 +1,31 @@
+{
+  "name": "superagent-relative",
+  "version": "0.0.1",
+  "description": "Make server-side requests to relative URLs with superagent",
+  "main": "index.js",
+  "scripts": {
+    "test": "tape test/**/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jesseditson/superagent-relative.git"
+  },
+  "keywords": [
+    "superagent",
+    "relative",
+    "request"
+  ],
+  "author": "Jesse Ditson <jesse.ditson@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jesseditson/superagent-relative/issues"
+  },
+  "homepage": "https://github.com/jesseditson/superagent-relative#readme",
+  "devDependencies": {
+    "onchange": "^2.0.0",
+    "tape": "^4.4.0"
+  },
+  "dependencies": {
+    "superagent": "^1.8.0-beta.1"
+  }
+}
