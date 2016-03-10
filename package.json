@@ -1,6 +1,6 @@
 {
   "name": "superagent-relative",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Make server-side requests to relative URLs with superagent",
   "main": "index.js",
   "scripts": {
