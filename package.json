@@ -22,7 +22,6 @@
   },
   "homepage": "https://github.com/jesseditson/superagent-relative#readme",
   "devDependencies": {
-    "onchange": "^2.0.0",
     "tape": "^4.4.0"
   },
   "dependencies": {
