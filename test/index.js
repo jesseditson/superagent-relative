@@ -43,22 +43,45 @@ test('base appends method aliases to curried function', t => {
 
 var handleError = e => t.catch(e, 'should not error')
 
-function performRequest(method, handler) {
+test('still has all superagent methods', t => {
+  var aliases = reqMethods
+  t.plan(aliases.length)
+  aliases.forEach(a => {
+    t.equal(typeof request[a], 'function', `has a ${a} function`)
+  })
+})
+
+function performRequest(method, handler, r) {
   var app = express()
   app[method]('/test', handler)
-  var opts = { port: port(), host: '0.0.0.0'}
-  var r = request.base(req(opts))
+  var p = port()
+  var opts = { port: p, host: '0.0.0.0'}
+  var url = 'http://0.0.0.0:' + p + '/test'
+  if (!r) {
+    url = '/test'
+    r = request.base(req(opts))
+  }
   return new Promise((resolve, reject) => {
     var server = app.listen(opts.port, opts.host, () => {
-      return new Promise((resolve, reject) => r[method]('/test').then(resolve, reject))
-        .then(res => {
+      r[method](url)
+        .end((err, res) => {
+          if (err) return reject(err)
           resolve(res)
           server.close()
         })
-        .catch(reject)
     })
   })
 }
+
+test('still can be used as a standard superagent instance', t => {
+  t.plan(1)
+  performRequest('get', (req, res) => {
+    console.log('requested')
+    res.send('hello')
+  }, request)
+    .then(res => t.equal(res.text, 'hello', 'should make a request'))
+    .catch(handleError)
+})
 
 test('base requests a local url', t => {
   t.plan(1)
