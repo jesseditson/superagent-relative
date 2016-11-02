@@ -25,6 +25,6 @@
     "tape": "^4.4.0"
   },
   "dependencies": {
-    "superagent": "^1.8.0-beta.1"
+    "superagent": "^2.3.0"
   }
 }
